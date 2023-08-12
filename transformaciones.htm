@@ -1,4 +1,37 @@
-<HTML>
-<H1>Transformaciones</H1>
-Nombre <input type = "text" id= "nombre">
-</HTML> 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transformaciones</title>
+  <script>
+    function convertirVector() {
+      // Get the input values
+      var cordx = parseFloat(document.getElementById("cual es la coordenada en x?").value);
+      var cordy = parseFloat(document.getElementById("cual es la coordenada en y?").value);
+      var cordz = parseFloat(document.getElementById("cual es la coordenada en z?").value);
+
+      // Perform the conversion
+      var magnitud = Math.sqrt(cordx * cordx + cordy * cordy + cordz * cordz);
+      var Vector = {
+        x: cordx / magnitud,
+        y: cordy / magnitud,
+        z: cordz / magnitud
+      };
+
+      // Display the result
+      document.getElementById("resultado").innerHTML = "Magnitud: " + magnitud.toFixed(2) + "<br>"
+        + "Unit Vector: (" + Vector.cordx.toFixed(2) + ", " + Vector.cordy.toFixed(2) + ", " + Vector.cordz.toFixed(2) + ")";
+    }
+  </script>
+</head>
+<body>
+  <h1>Conversion de vector</h1>
+  <label for="x">X-coordenada:</label>
+  <input type="numero" id="x"><br>
+  <label for="y">Y-coordenada:</label>
+  <input type="numero" id="y"><br>
+  <label for="z">Z-coordenada:</label>
+  <input type="numero" id="z"><br>
+  <button onclick="convertirVector()">Convertir</button><br>
+  <div id="resultado"></div>
+</body>
+</html>
